@@ -4,15 +4,36 @@ import 'package:resume/utilities/grey_box.dart';
 import 'package:resume/utilities/social_icon.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
+import 'dart:convert';
+
 class DesktopBody extends StatefulWidget {
-  const DesktopBody({Key? key, required this.myInfo}) : super(key: key);
-  final Map<String, dynamic> myInfo;
+  const DesktopBody({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<DesktopBody> createState() => _DesktopBodyState();
 }
 
 class _DesktopBodyState extends State<DesktopBody> {
+  late Map<String, dynamic> myInfo = {};
+
+  //Fetching content from the JSON file
+  Future<void> fetchContent() async {
+    final String response =
+        await DefaultAssetBundle.of(context).loadString("assets/data.json");
+    setState(() {
+      myInfo = json.decode(response);
+    });
+  }
+
+  @override
+  void initState() {
+    fetchContent();
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -57,7 +78,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Text(
-                                            '${widget.myInfo['hire_button']}',
+                                            '${myInfo['hire_button']}',
                                             style: GoogleFonts.roboto(
                                                 fontWeight: FontWeight.w600,
                                                 color: Colors.white,
@@ -74,7 +95,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                   ),
                                 ),
                                 AutoSizeText(
-                                  '${widget.myInfo['hero_sentence']}',
+                                  '${myInfo['hero_sentence']}',
                                   style: GoogleFonts.roboto(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
@@ -102,7 +123,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            '${widget.myInfo['years_of_experience']}',
+                                            '${myInfo['years_of_experience']}',
                                             style: GoogleFonts.roboto(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold,
@@ -131,7 +152,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            '${widget.myInfo['handled_projects']}',
+                                            '${myInfo['handled_projects']}',
                                             style: GoogleFonts.roboto(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold,
@@ -160,7 +181,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            '${widget.myInfo['number_of_clients']}',
+                                            '${myInfo['number_of_clients']}',
                                             style: GoogleFonts.roboto(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold,
@@ -271,7 +292,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                                 padding: const EdgeInsets.only(
                                                     right: 10.0),
                                                 child: Text(
-                                                  '${widget.myInfo['name']}',
+                                                  '${myInfo['name']}',
                                                   style: GoogleFonts.poppins(
                                                       fontSize: 18,
                                                       fontWeight:
@@ -323,7 +344,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                                         const EdgeInsets.only(
                                                             right: 8.0),
                                                     child: Text(
-                                                      '${widget.myInfo['based_in']}',
+                                                      '${myInfo['based_in']}',
                                                       style:
                                                           GoogleFonts.poppins(
                                                               fontSize: 16,
@@ -452,7 +473,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                '${widget.myInfo['ui_portfolio'][index]['image']}'),
+                                                '${myInfo['ui_portfolio'][index]['image']}'),
                                             fit: BoxFit.cover),
                                         borderRadius: const BorderRadius.all(
                                             Radius.circular(10))),
@@ -507,7 +528,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                 padding:
                                     const EdgeInsets.only(right: 8.0, left: 8),
                                 child: AutoSizeText(
-                                  '${widget.myInfo['about_description']}',
+                                  '${myInfo['about_description']}',
                                   maxFontSize: 48,
                                   style: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w200,
