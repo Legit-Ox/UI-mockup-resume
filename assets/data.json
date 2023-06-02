@@ -1,0 +1,21 @@
+{
+  "name": "Saahil Doshi",
+  "based_in": "Ahmedabad",
+  "hero_sentence": "Implementing UI designs using flutter to give them life",
+  "hire_button": "Hire Me",
+  "years_of_experience": "2+",
+  "handled_projects": "54+",
+  "number_of_clients": "40+",
+  "about_description": "I am a flutter developer, with a passion of creating full stack deployable applications with the most optimized backend the most appealing frontend. I have a strong understanding of how things work in huge codebases and work closely with other developers and UI designers to bring their ideas to life. I have had the oppurtunity to work at an emerging social media startup based in Delhi where I was primarily working on the frontend of the deployed app, improving features both for IOS and Android.",
+  "ui_portfolio": [
+    {
+      "image": "assets/images/portfolio1.png"
+    },
+    {
+      "image": "assets/images/portfolio2.png"
+    },
+    {
+      "image": "assets/images/portfolio3.png"
+    }
+  ]
+}
